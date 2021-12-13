@@ -89,7 +89,7 @@ function slideInit(){
         let slide_txt = slide.querySelectorAll('span');
         let slide_txt_wid = slide_txt[0].clientWidth;
 
-        slide.style.width = `${slide_txt_wid * slide_txt.length + 100}px`;
+        slide.style.width = `${slide_txt_wid * slide_txt.length + 40}px`;
 
         let slideAni = () =>{
             slideNum += 1;
