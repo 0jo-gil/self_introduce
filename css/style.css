@@ -1,0 +1,791 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+* {
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  overflow-x: hidden;
+}
+body.hidden {
+  overflow: hidden;
+}
+
+.inner {
+  width: 1179px;
+  margin: 0 auto;
+}
+
+#webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.slide_wrap {
+  width: 100%;
+  overflow: hidden;
+}
+.slide_wrap .slide span {
+  display: inline-block;
+  font-size: 80px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.wrap {
+  width: 100%;
+}
+.wrap #main {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: 0.5s;
+}
+.wrap #main .content_wrap {
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 60px;
+}
+.wrap #main .content_wrap .gnb {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+}
+.wrap #main .content_wrap .gnb ul li {
+  display: inline-block;
+}
+.wrap #main .content_wrap .gnb ul li a {
+  font-size: 22px;
+  color: #fff;
+}
+.wrap #main .content_wrap .gnb ul li:not(:nth-of-type(1)) {
+  margin-left: 20px;
+}
+.wrap #main .content_wrap .txt h1 {
+  font-size: 60px;
+  color: #fff;
+  line-height: 1.2;
+}
+.wrap #main .content_wrap .desc {
+  position: absolute;
+  bottom: 60px;
+  left: 20%;
+}
+.wrap #main .content_wrap .desc p {
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+}
+.wrap #main.after {
+  opacity: 0;
+  top: -100%;
+}
+.wrap #info {
+  width: 100%;
+  height: 600vh;
+  margin-top: 100vh;
+}
+.wrap #info .contents-wrap {
+  width: 100%;
+  height: 200vh;
+  position: relative;
+}
+.wrap #info .contents-wrap .tit_wrap {
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.wrap #info .contents-wrap .tit p {
+  font-size: 5.6vw;
+  font-weight: bold;
+}
+.wrap #info .contents-wrap .tit p span {
+  display: inline-block;
+  transition: 1500ms cubic-bezier(0.23, 1, 0.32, 1);
+  color: #c46c00;
+}
+.wrap #story {
+  width: 100%;
+  position: relative;
+  margin-top: 100vh;
+}
+.wrap #story .content_wrap {
+  width: 100%;
+  height: 200vh;
+}
+.wrap #story .content_wrap .tit h1 {
+  font-size: 60px;
+  line-height: 1.4;
+  color: #fff;
+}
+.wrap #story .content_wrap .link_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 60px 0;
+}
+.wrap #story .content_wrap .link_wrap > div {
+  display: flex;
+}
+.wrap #story .content_wrap .link_wrap .link {
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.wrap #story .content_wrap .link_wrap .link a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.wrap #story .content_wrap .link_wrap .link a span {
+  position: relative;
+  font-size: 18px;
+}
+.wrap #story .content_wrap .link_wrap .link a::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: #c46c00;
+  position: absolute;
+  top: 101%;
+  left: 0;
+  transition: 0.5s;
+}
+.wrap #story .content_wrap .link_wrap .link a:hover {
+  border-color: #c46c00;
+}
+.wrap #story .content_wrap .link_wrap .link a:hover::before {
+  top: 0;
+}
+.wrap #story .content_wrap .link_wrap .text {
+  width: 50%;
+  align-items: center;
+}
+.wrap #story .content_wrap .link_wrap .text p {
+  display: inline-block;
+  font-size: 20px;
+  color: #fff;
+  position: relative;
+  line-height: 1.2;
+}
+.wrap #story .content_wrap .link_wrap .text p::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  margin-top: 40px;
+}
+.wrap #story .content_wrap .link_wrap > p {
+  width: 100%;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.6;
+  margin-top: 60px;
+}
+.wrap #story .content_wrap .list {
+  width: 100%;
+  height: 100vh;
+}
+.wrap #story .content_wrap .list ul {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.wrap #story .content_wrap .list ul li {
+  height: 140px;
+}
+.wrap #story .content_wrap .list ul li p {
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.wrap #story .content_wrap .list ul li p::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+}
+.wrap #story .content_wrap .list ul li p::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: #c46c00;
+  position: absolute;
+  bottom: 0px;
+  left: -100%;
+  transition: 1s;
+}
+.wrap #story .content_wrap .list ul li span {
+  display: inline-block;
+  font-size: 130px;
+  color: #c46c00;
+  position: relative;
+  transform: translateY(200%) rotateZ(10deg) skewX(30deg) skewY(20deg);
+  transition: 1s;
+}
+.wrap #story .content_wrap .list ul img {
+  width: 80px;
+  object-fit: cover;
+  position: absolute;
+}
+.wrap #story .content_wrap .list ul img:nth-of-type(1) {
+  top: 34%;
+  right: 30%;
+  transform: rotate(45deg);
+}
+.wrap #story .content_wrap .list ul img:nth-of-type(2) {
+  top: 15%;
+  left: 32%;
+  transform: rotate(-13deg);
+}
+.wrap #story .content_wrap .list.active ul li p::after {
+  left: 0;
+}
+.wrap #story .content_wrap .list.active ul li p span {
+  transform: translateY(0) rotateZ(0) skewX(0) skewY(0);
+}
+.wrap #work {
+  width: 100%;
+  position: relative;
+  padding: 120px 0;
+}
+.wrap #work .inner .tit {
+  width: 100%;
+  margin-bottom: 120px;
+}
+.wrap #work .inner .tit h1 {
+  font-size: 72px;
+  color: #fff;
+  text-align: center;
+}
+.wrap #work .inner .content_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.wrap #work .inner .content_wrap > div {
+  width: 45%;
+}
+.wrap #work .inner .content_wrap > div .content {
+  width: 100%;
+  margin-bottom: 120px;
+}
+.wrap #work .inner .content_wrap > div .content a {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.wrap #work .inner .content_wrap > div .content a .pic {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.wrap #work .inner .content_wrap > div .content a .pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.wrap #work .inner .content_wrap > div .content a .txt {
+  width: 100%;
+  pointer-events: none;
+}
+.wrap #work .inner .content_wrap > div .content a .txt h3 {
+  font-size: 36px;
+  color: #fff;
+}
+.wrap #work .inner .content_wrap > div .content a .txt p span {
+  display: block;
+  font-size: 16px;
+  color: #eee;
+  margin: 10px 0;
+}
+.wrap #work .inner .content_wrap > div .content a .txt p span:nth-of-type(2) {
+  line-height: 1.4;
+}
+.wrap #work .inner .content_wrap > div .content a .txt > span {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  color: #999;
+}
+.wrap #work .inner .content_wrap > div .content a .cursor {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #c46c00;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.wrap #work .inner .content_wrap > div .content a .cursor::before, .wrap #work .inner .content_wrap > div .content a .cursor::after {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform-origin: right center;
+  background-color: #fff;
+}
+.wrap #work .inner .content_wrap > div .content a .cursor::before {
+  transform: translate(50%, -50%) rotate(-40deg);
+}
+.wrap #work .inner .content_wrap > div .content a .cursor::after {
+  transform: translate(50%, -50%) rotate(40deg);
+}
+.wrap #work .inner .content_wrap > div .content a .cursor.active {
+  animation: cursor 1s forwards;
+}
+.wrap #work .inner .content_wrap > div.right_con {
+  padding-top: 300px;
+}
+.wrap #contact {
+  width: 100%;
+  height: 400vh;
+  position: relative;
+  padding-top: 100vh;
+}
+.wrap #contact .inner > .tit {
+  margin-bottom: 120px;
+}
+.wrap #contact .inner > .tit h1 {
+  font-size: 60px;
+  color: #fff;
+  line-height: 1.4;
+}
+.wrap #contact .inner .content_wrap {
+  width: 100%;
+  padding-left: 50%;
+}
+.wrap #contact .inner .content_wrap .content {
+  width: 100%;
+}
+.wrap #contact .inner .content_wrap .content > p {
+  font-size: 24px;
+  color: #fff;
+  line-height: 1.4;
+}
+.wrap #contact .inner .content_wrap .content .tit {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #fff;
+}
+.wrap #contact .inner .content_wrap .content .tit h3 {
+  font-size: 22px;
+}
+.wrap #contact .inner .content_wrap .content .tit p {
+  font-size: 18px;
+  color: #aaa;
+}
+.wrap #contact .inner .content_wrap .content .txt {
+  padding-top: 20px;
+}
+.wrap #contact .inner .content_wrap .content .txt p {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.wrap #contact .inner .content_wrap .content:not(:first-of-type) {
+  margin-top: 60px;
+}
+.wrap #contact .contact_slide_wrap {
+  position: absolute;
+  bottom: 160px;
+  left: 0;
+}
+.wrap #contact .contact_slide_wrap .contact_slide {
+  overflow-y: hidden;
+  perspective: 700px;
+}
+.wrap #contact .contact_slide_wrap .contact_slide span {
+  transform: translateY(400%) rotateZ(10deg) skewX(30deg) skewY(20deg);
+  transition: 1s;
+}
+.wrap #contact .contact_slide_wrap.active .contact_slide span {
+  transform: translateY(0) rotateZ(0) skewX(0) skewY(0);
+}
+.wrap #footer {
+  width: 100%;
+  height: 260px;
+  position: relative;
+}
+.wrap #footer .inner {
+  height: 100%;
+}
+.wrap #footer .inner .wrap {
+  width: 60%;
+  display: flex;
+}
+.wrap #footer .inner .wrap .address {
+  width: 50%;
+}
+.wrap #footer .inner .wrap .address p {
+  font-size: 18px;
+}
+.wrap #footer .inner .wrap .address p:not(:first-of-type) {
+  margin-top: 20px;
+}
+.wrap #footer .inner .wrap .link {
+  width: 25%;
+}
+.wrap #footer .inner .wrap .link ul {
+  width: 100%;
+}
+.wrap #footer .inner .wrap .link ul li a {
+  font-size: 18px;
+}
+.wrap #footer .inner .wrap .link ul li:not(:first-of-type) {
+  margin-top: 20px;
+}
+.wrap #footer .inner .wrap .info {
+  width: 25%;
+}
+.wrap #footer .inner .wrap .info p {
+  font-size: 18px;
+  line-height: 1.4;
+}
+.wrap #footer .inner > p {
+  margin-top: 60px;
+  font-size: 18px;
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 1179px) {
+  .inner {
+    width: 100%;
+  }
+
+  .wrap {
+    padding: 0 40px;
+  }
+  .wrap #main .content_wrap .txt h1 {
+    font-size: 7.5vw;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .wrap #info .contents-wrap .tit p {
+    font-size: 7.6vw;
+  }
+  .wrap #story .content_wrap .tit h1 {
+    font-size: 5vw;
+  }
+  .wrap #story .content_wrap .list ul li {
+    height: 110px;
+  }
+  .wrap #story .content_wrap .list ul li span {
+    font-size: 110px;
+  }
+  .wrap #work {
+    padding: 80px 0;
+  }
+  .wrap #work .inner .tit {
+    margin-bottom: 100px;
+  }
+  .wrap #work .inner .tit h1 {
+    font-size: 60px;
+  }
+  .wrap #work .inner .content_wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .wrap #work .inner .content_wrap > div {
+    width: 45%;
+  }
+  .wrap #work .inner .content_wrap > div .content {
+    width: 100%;
+    margin-bottom: 120px;
+  }
+  .wrap #work .inner .content_wrap > div .content a {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+  .wrap #work .inner .content_wrap > div .content a .pic {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .wrap #work .inner .content_wrap > div .content a .pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .wrap #work .inner .content_wrap > div .content a .txt {
+    width: 100%;
+    pointer-events: none;
+  }
+  .wrap #work .inner .content_wrap > div .content a .txt h3 {
+    font-size: 36px;
+    color: #fff;
+  }
+  .wrap #work .inner .content_wrap > div .content a .txt p span {
+    display: block;
+    font-size: 16px;
+    color: #eee;
+    margin: 10px 0;
+  }
+  .wrap #work .inner .content_wrap > div .content a .txt p span:nth-of-type(2) {
+    line-height: 1.4;
+  }
+  .wrap #work .inner .content_wrap > div .content a .txt > span {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    color: #999;
+  }
+  .wrap #work .inner .content_wrap > div .content a .cursor {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #c46c00;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .wrap #work .inner .content_wrap > div .content a .cursor::before, .wrap #work .inner .content_wrap > div .content a .cursor::after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform-origin: right center;
+    background-color: #fff;
+  }
+  .wrap #work .inner .content_wrap > div .content a .cursor::before {
+    transform: translate(50%, -50%) rotate(-40deg);
+  }
+  .wrap #work .inner .content_wrap > div .content a .cursor::after {
+    transform: translate(50%, -50%) rotate(40deg);
+  }
+  .wrap #work .inner .content_wrap > div .content a .cursor.active {
+    animation: cursor 1s forwards;
+  }
+  .wrap #work .inner .content_wrap > div.right_con {
+    padding-top: 300px;
+  }
+  .wrap #contact .inner > .tit h1 {
+    font-size: 5vw;
+  }
+  .wrap #contact .inner .content_wrap {
+    padding-left: 30%;
+  }
+  .wrap #contact .inner .content_wrap .content > p {
+    font-size: 2.4vw;
+  }
+  .wrap #footer {
+    width: 100%;
+  }
+  .wrap #footer .inner .wrap {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 539px) {
+  .wrap {
+    padding: 0 20px;
+  }
+  .wrap #main .content_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .wrap #main .content_wrap .gnb {
+    display: none;
+  }
+  .wrap #main .content_wrap .txt {
+    margin-bottom: 40px;
+  }
+  .wrap #main .content_wrap .txt h1 {
+    font-size: 9vw;
+  }
+  .wrap #main .content_wrap .desc {
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+  .wrap #info .contents-wrap .tit p {
+    font-size: 9vw;
+  }
+  .wrap #story .content_wrap {
+    height: auto;
+  }
+  .wrap #story .content_wrap .link_wrap {
+    display: block;
+  }
+  .wrap #story .content_wrap .link_wrap .link {
+    width: 100%;
+  }
+  .wrap #story .content_wrap .link_wrap .text {
+    display: none;
+  }
+  .wrap #story .content_wrap .list img {
+    display: none;
+  }
+  .wrap #work {
+    padding: 120px 0;
+  }
+  .wrap #work .inner .content_wrap {
+    width: 100%;
+    display: block;
+  }
+  .wrap #work .inner .content_wrap > div {
+    width: 100%;
+  }
+  .wrap #work .inner .content_wrap > div .content {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+  .wrap #work .inner .content_wrap > div .content a .cursor {
+    width: 60px;
+    height: 60px;
+  }
+  .wrap #work .inner .content_wrap > div.right_con {
+    padding-top: 0;
+  }
+  .wrap #contact .inner .tit {
+    margin-bottom: 80px;
+  }
+  .wrap #contact .inner .content_wrap {
+    padding-left: 0;
+  }
+  .wrap #contact .inner .content_wrap .content > p {
+    font-size: 3.3vw;
+  }
+  .wrap #contact .inner .content_wrap .content .tit {
+    margin-bottom: 20px;
+  }
+  .wrap #footer {
+    width: 100%;
+  }
+  .wrap #footer .inner .wrap {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .wrap #footer .inner .wrap .address {
+    width: 50%;
+  }
+  .wrap #footer .inner .wrap .link {
+    width: 50%;
+  }
+  .wrap #footer .inner .wrap .info {
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
