@@ -1,16 +1,17 @@
 const infoSection = document.querySelector('#info');
 const infoSectionCon = document.querySelectorAll('#info .contents-wrap');
 
-
+// 윈도우 로딩 전 스크롤 상단
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }; 
 
+// 스크롤 이벤트
 window.addEventListener('scroll', e => {
     let y = document.querySelector('html, body').scrollTop;
 
     if(y > infoSection.offsetTop){
-
+        // info 텍스트 이벤트
         infoSectionCon.forEach((el, index) => {
             if(y > window.pageYOffset + el.getBoundingClientRect().top){
                 let infoPer = ((y - (window.pageYOffset + el.getBoundingClientRect().top)) / el.clientHeight) * 2;
@@ -37,6 +38,7 @@ window.addEventListener('scroll', e => {
     }
 });
 
+// info 텍스트 함수
 function infoTxt(el, per, num1, num2){
     el.forEach((ele, index) => {
         ele.style.opacity = `${1 - per * num1}`;
@@ -46,8 +48,6 @@ function infoTxt(el, per, num1, num2){
 
 
 const slide_wrap = document.querySelectorAll('.slide_wrap');
-// const slide_txt = slide.querySelectorAll('span');
-
 const workListLink = document.querySelectorAll('#work .content a');
 
 let slideNum = 0;
@@ -56,6 +56,7 @@ window.onload = () => {
     slideInit();
 };
 
+// 마우스 커서 생성 및 제거 이벤트
 workListLink.forEach((el, index) => {
     let createCursor = document.createElement('span');
     createCursor.classList.add('cursor');
@@ -83,6 +84,7 @@ workListLink.forEach((el, index) => {
 });
 
 
+// 텍스트 슬라이드 설정 및 이벤트 함수
 function slideInit(){
     slide_wrap.forEach((ele, index) => {
         let slide = ele.querySelector('.slide');
