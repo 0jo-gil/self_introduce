@@ -28,6 +28,7 @@ let videoPlane;
 let line;
 let parameters;
 
+// 윈도우 로드 전 스크롤 상단 위치
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }; 
@@ -36,7 +37,9 @@ init();
 animate();
 
 function init() {
+    // 카메라 설정
     camera = new THREE.PerspectiveCamera( 80, innerWidth / innerHeight, 1, 3000 );
+    // 카메라 z축
     camera.position.z = 30;
 
     scene = new THREE.Scene();
@@ -49,9 +52,8 @@ function init() {
 
     // 구체 라인 반복문
     for ( let i = 0; i < parameters.length; ++ i ) {
-
+        // line 배열 변수 할당
         const p = parameters[ i ];
-
         const material = new THREE.LineBasicMaterial( { color: p[ 1 ], opacity: p[ 2 ] } );
 
         line = new THREE.LineSegments( geometry, material );
@@ -66,7 +68,9 @@ function init() {
   
     // 텍스쳐 및 material 배열 저장
     for(let i=0; i<6; i++){
+        // 사진 텍스쳐 배열 저장
         textureArr.push(new THREE.TextureLoader().load(`img/work/${i}.png`));
+        // material 배열 저장
         mater.push(new THREE.MeshBasicMaterial({map: textureArr[i], transparent: true, opacity: 1}));
         mater[i].side = THREE.DoubleSide;
 
@@ -81,16 +85,17 @@ function init() {
         el.scale.set(0, 55, 0);
         scene.add(el);
     });
-
     planeArr.forEach((el, index) => {
         el.position.x =  -100 + (((Math.PI * 5)) * 2.5) * index;
         el.scale.set(0, 0, 0); 
         scene.add(el);
-    })
+    });
 
     // 비디오 텍스쳐 만들기
     const video = document.getElementById('video');
+    // 비디오 자동 재생
     video.play();
+    // 비디오 텍스쳐 변수
     const videoTexture = new THREE.VideoTexture(video);
     const videoPlaneGeometry = new THREE.PlaneGeometry(15, 10);
     const videoMaterial = new THREE.MeshBasicMaterial( {map: videoTexture, side: THREE.FrontSide, toneMapped: false} );
@@ -141,7 +146,7 @@ function createGeometry() {
 
     return geometry;
 
-}
+};
 
 // 윈도우 사이즈 조절 함수
 function onWindowResize() {
@@ -171,34 +176,35 @@ function animate() {
 
 }
 
+// render 함수
 function render() {
     rot += 0.0005;
 
     targetX = mouseX * .001;
     targetY = mouseY * .001;
 
+    // 마우스 회전 애니메이션
     for ( let i = 0; i < 8; i ++ ) {
         scene.children[i].rotation.y += 0.05 * ( targetX - line.rotation.y );
         scene.children[i].rotation.x += 0.05 * ( targetY - line.rotation.x );
-    }
-
+    };
     for(let i = 14; i<scene.children.length; i++){
         scene.children[i].rotation.x += 0.05 * ( targetY - line.rotation.x );
-    }
+    };
        
-    
+    // 사진 텍스쳐 회전 애니메이션
     meshArr.forEach((el, index) => {
         el.rotation.y = index * 1.05 + rot;
     });
-     
     
     camera.lookAt( scene.position );
 
     renderer.render( scene, camera );
+};
 
-}
 let mainNum = 0;
 
+// wheel 이벤트
 window.addEventListener('wheel', (e) => {
     let wheel = e.deltaY;
 
@@ -261,21 +267,20 @@ function mainAni(){
     mainNum += 0.01;
 
     if(mainNum > 1) return;
+    // 카메라 애니메이션
     if(mainNum < 1){ 
         camera.position.z = mainNum * 1000;
-    }
+    };
 
+    // 구형 라인 애니메이션
     if(mainNum > 0.5){
         meshArr.forEach((el, index) => {
             el.rotation.y = (index * 1.05) + ((0.5 - mainNum) * 2) * 3.2;
             el.scale.set(((0.5 - mainNum) * 2)  * 55, 55, ((0.5 - mainNum) * 2) * 55);
-        })
+        });
     };
-
-
     requestAnimationFrame(mainAni);
     renderer.render( scene, camera );
-
 };
 
 const storySection = document.querySelector('#story');
@@ -283,6 +288,7 @@ const contactSection = document.querySelector('#contact');
 
 // 스크롤 이벤트
 window.addEventListener('scroll', e => {
+    // 스크롤 위치 변수
     let y = document.querySelector('html, body').scrollTop;
 
     if(y < document.querySelector('#info').offsetTop && y > storySection.offsetTop){
